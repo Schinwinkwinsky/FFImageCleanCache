@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ffimg="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             mc:Ignorable="d"
+             x:Class="FFImageCleanCache.Views.MainPage"
+             Title="{Binding Title}">
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <StackLayout>
+                    <ffimg:CachedImage Source="{Binding PresentSource}"
+                               WidthRequest="300"
+                               HeightRequest="200"
+                               Margin="30">
+                        <ffimg:CachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ImgBtnRsrcCommand}"/>
+                        </ffimg:CachedImage.GestureRecognizers>
+                        <ffimg:CachedImage.Transformations>
+                            <fftrans:CircleTransformation />
+                        </ffimg:CachedImage.Transformations>
+                    </ffimg:CachedImage>
+                    <Button Text="Image Url 1"
+                    Command="{Binding ImgBtn1Command}"/>
+                    <Button Text="Image Url 2"
+                    Command="{Binding ImgBtn2Command}"/>
+                    <Button Text="Image from Stream"
+                    Command="{Binding ImgBtnStrmCommand}"/>
+                    <Button Text="Image from Resources"
+                    Command="{Binding ImgBtnRsrcCommand}"/>
+                </StackLayout>
+            </Grid>
+        </ScrollView>        
+    </ContentPage.Content>
+</ContentPage>
