@@ -119,15 +119,6 @@ namespace FFImageCleanCache.ViewModels
             if (file == null)
                 return;
 
-            await CachedImage.InvalidateCache(ImageSource, CacheType.All, false);
-
-            ImageSource = ImageSource.FromFile(file.Path);
-
-            var stream = file.GetStreamWithImageRotatedForExternalStorage();
-
-            imgArray = stream.ToByteArray();
-
-
             // The code bellow causes the error.
 
             //ImageSource = ImageSource.FromStream(() =>
@@ -139,6 +130,16 @@ namespace FFImageCleanCache.ViewModels
 
             //    return stream;
             //});
+
+            // The code bellow is an anternative to code above.
+
+            await CachedImage.InvalidateCache(ImageSource, CacheType.All, false);
+
+            ImageSource = ImageSource.FromFile(file.Path);
+
+            var stream = file.GetStreamWithImageRotatedForExternalStorage();
+
+            imgArray = stream.ToByteArray();
         }
     }
 }
